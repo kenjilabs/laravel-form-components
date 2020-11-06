@@ -1,21 +1,19 @@
-<div class="@if($type === 'hidden') hidden @else uk-margin @endif">
-    <label>
-        <x-form-label :label="$label" />
-
+<div class="@if($type === 'hidden') hidden @else uk-margin-bottom blade-field-w @endif">
+    <div class="blade-field">
         <input {!! $attributes->merge([
-            'class' => 'uk-input' . ($label ? 'uk-margin-small-top' : '')
+            'class' => 'uk-input'
         ]) !!}
-            @if($isWired())
-                wire:model="{{ $name }}"
-            @else
-                name="{{ $name }}"
-                value="{{ $value }}"
-            @endif
+               @if($isWired())
+               wire:model="{{ $name }}"
+               @else
+               name="{{ $name }}"
+               value="{{ $value }}"
+               @endif
 
-            type="{{ $type }}" />
-    </label>
-
+               type="{{ $type }}"/>
+        <x-form-label :label="$label"/>
+    </div>
     @if($hasErrorAndShow($name))
-        <x-form-errors :name="$name" />
+        <x-form-errors :name="$name"/>
     @endif
 </div>

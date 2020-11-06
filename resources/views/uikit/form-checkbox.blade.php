@@ -1,5 +1,5 @@
-<div class="uk-margin">
-    <label>
+<div >
+    <label >
         <input {!! $attributes->merge(['class' => 'uk-checkbox']) !!}
             type="checkbox"
             value="{{ $value }}"

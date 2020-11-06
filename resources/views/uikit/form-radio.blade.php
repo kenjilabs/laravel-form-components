@@ -1,6 +1,6 @@
 <div>
-    <label>
-        <input {!! $attributes->merge(['class' => 'uk-radio']) !!}
+     <label class="{{$attributes->get('data-label-class')?'blade-field-radio-button':''}}">
+        <input {!! $attributes->except(['data-label-class'])->merge(['class' => 'uk-radio']) !!}
             type="radio"
 
             @if($isWired())
@@ -16,7 +16,7 @@
             @endif
         />
 
-        <span>{{ $label }}</span>
+        <span class="{{$attributes->get('data-label-class')}}">{!! $label !!}</span>
     </label>
 
     @if($hasErrorAndShow($name))

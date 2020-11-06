@@ -1,20 +1,18 @@
-<div class="uk-margin">
-    <label>
-        <x-form-label :label="$label" />
-
+<div class="uk-margin-bottom blade-field-w">
+    <div class="blade-field">
         <select
             @if($isWired())
-                wire:model="{{ $name }}"
+            wire:model="{{ $name }}"
             @else
-                name="{{ $name }}"
+            name="{{ $name }}"
             @endif
 
             @if($multiple)
-                multiple
+            multiple
             @endif
 
             {!! $attributes->merge([
-                'class' => ($label ? 'uk-margin-small-top' : '') . ' uk-select ' . ($multiple ? 'multiselect' : '')
+                'class' =>' uk-select ' . ($multiple ? 'multiselect' : '')
             ]) !!}>
             @forelse($options as $key => $option)
                 <option value="{{ $key }}" @if($isSelected($key)) selected="selected" @endif>
@@ -24,9 +22,11 @@
                 {!! $slot !!}
             @endforelse
         </select>
-    </label>
+        <x-form-label :label="$label"/>
+
+    </div>
 
     @if($hasErrorAndShow($name))
-        <x-form-errors :name="$name" />
+        <x-form-errors :name="$name"/>
     @endif
 </div>
